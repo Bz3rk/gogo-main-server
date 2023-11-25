@@ -1,0 +1,836 @@
+openapi: 3.0.3
+info:
+  title: GOGO-API
+  version: 1.0.0
+  description: Your API Description
+paths:
+  /api/assign-car:
+    post:
+      operationId: api_assign_car_create
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          description: No response body
+  /api/auth/:
+    get:
+      operationId: api_auth_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+    post:
+      operationId: api_auth_create
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          description: No response body
+  /api/book-ride/:
+    post:
+      operationId: api_book_ride_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Ride'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Ride'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Ride'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+          description: ''
+  /api/bookings/{user_id}:
+    get:
+      operationId: api_bookings_retrieve
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingSummary'
+          description: ''
+  /api/bookings/create:
+    post:
+      operationId: api_bookings_create_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookingSummary'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BookingSummary'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BookingSummary'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingSummary'
+          description: ''
+  /api/client-login/:
+    post:
+      operationId: api_client_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Data'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Data'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data'
+          description: ''
+  /api/client-register/:
+    post:
+      operationId: api_client_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientRegistration'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientRegistration'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientRegistration'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientRegistration'
+          description: ''
+  /api/driver-login/:
+    post:
+      operationId: api_driver_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Data'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Data'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Data'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Data'
+          description: ''
+  /api/driver-register/:
+    post:
+      operationId: api_driver_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DriverUpdate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DriverUpdate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DriverUpdate'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DriverUpdate'
+          description: ''
+  /api/junction-list/:
+    get:
+      operationId: api_junction_list_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Junction'
+          description: ''
+  /api/price-table-list/:
+    get:
+      operationId: api_price_table_list_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PriceTable'
+          description: ''
+  /api/ride-summary/{ride_id}:
+    get:
+      operationId: api_ride_summary_retrieve
+      parameters:
+      - in: path
+        name: ride_id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ride'
+          description: ''
+  /api/schema/:
+    get:
+      operationId: api_schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - ckb
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/testimonials/:
+    get:
+      operationId: api_testimonials_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Testimonials'
+          description: ''
+  /api/testimonials/{id}/:
+    get:
+      operationId: api_testimonials_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimonials'
+          description: ''
+    put:
+      operationId: api_testimonials_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimonials'
+          description: ''
+    patch:
+      operationId: api_testimonials_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTestimonials'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTestimonials'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTestimonials'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimonials'
+          description: ''
+    delete:
+      operationId: api_testimonials_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/testimonials/create:
+    post:
+      operationId: api_testimonials_create_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Testimonials'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Testimonials'
+          description: ''
+  /api/user-ride-list:
+    get:
+      operationId: api_user_ride_list_retrieve
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Car'
+          description: ''
+components:
+  schemas:
+    BookingSummary:
+      type: object
+      properties:
+        user:
+          type: integer
+          readOnly: true
+        user_location:
+          type: string
+          maxLength: 300
+        destination:
+          type: string
+          maxLength: 300
+        two_way:
+          type: boolean
+        no_of_passengers:
+          type: integer
+        pickup_long:
+          type: number
+          format: double
+        pickup_lat:
+          type: number
+          format: double
+        dest_long:
+          type: number
+          format: double
+        dest_lat:
+          type: number
+          format: double
+        distance:
+          type: number
+          format: double
+          readOnly: true
+        price:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created_at
+      - dest_lat
+      - dest_long
+      - destination
+      - distance
+      - no_of_passengers
+      - pickup_lat
+      - pickup_long
+      - price
+      - two_way
+      - user
+      - user_location
+    Car:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        car_model:
+          type: string
+          maxLength: 300
+        license_plate:
+          type: string
+          maxLength: 300
+        driver:
+          type: integer
+      required:
+      - car_model
+      - driver
+      - id
+      - license_plate
+    ClientRegistration:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+        first_name:
+          type: string
+          maxLength: 30
+        last_name:
+          type: string
+          maxLength: 30
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+      required:
+      - email
+      - first_name
+      - id
+      - last_name
+      - password
+    Data:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - email
+      - id
+      - password
+    DriverUpdate:
+      type: object
+      properties:
+        is_driver:
+          type: boolean
+          readOnly: true
+        phone_no:
+          type: string
+          nullable: true
+          maxLength: 150
+      required:
+      - is_driver
+    Junction:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - id
+      - name
+      - updated
+    PatchedTestimonials:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: integer
+          readOnly: true
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+    PriceTable:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        start_junction:
+          type: integer
+        end_junction:
+          type: integer
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - end_junction
+      - id
+      - price
+      - start_junction
+      - updated
+    Ride:
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User'
+        id:
+          type: integer
+          readOnly: true
+        start_junction:
+          $ref: '#/components/schemas/Junction'
+        end_junction:
+          $ref: '#/components/schemas/Junction'
+        no_of_passengers:
+          type: integer
+        two_way:
+          type: boolean
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - end_junction
+      - id
+      - price
+      - start_junction
+      - user
+    Testimonials:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: integer
+          readOnly: true
+        body:
+          type: string
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - author
+      - body
+      - created
+      - id
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+      required:
+      - id
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
